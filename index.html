@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>BALD ATTACK</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALD ROAST</title>
 <style>
   body {
     margin: 0;
     overflow: hidden;
-    background: #fff;
+    background: white;
     font-family: Impact, sans-serif;
   }
 
@@ -17,13 +17,7 @@
     font-size: 32px;
     white-space: nowrap;
     color: hsl(calc(360 * var(--rand)), 100%, 50%);
-    animation: zoom 1s infinite alternate;
     pointer-events: none;
-  }
-
-  @keyframes zoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.5); }
   }
 
   .mrclean {
@@ -32,7 +26,6 @@
     transform-origin: center;
     pointer-events: none;
   }
-
 </style>
 </head>
 <body>
@@ -47,36 +40,36 @@ const roastLines = [
   "WHERE'S YOUR HAIR?",
   "SMOOTH HEAD ALERT!",
   "POLISHED SKULL MODE!",
-  "FRESHLY WAXED BRAINCASE!",
   "IS THAT A MIRROR OR YOUR FOREHEAD?",
   "SUN REFLECTOR ACTIVE!",
   "SHINY LIKE A BOWLING BALL!",
-  "SPF 100 REQUIRED!",
   "BALD ENERGY MAXIMUM!",
-  "HAIRLESS WONDER!",
   "CUEBALL LOOKING GUY!",
-  "WHO NEEDS SHAMPOO?",
-  "HEAD SO SMOOTH NASA CALLING!",
-  "BEACON OF BALDNESS!",
-  "MR. CLEAN REAL LIFE!",
   "YOUR HAIRLINE IS A MEMORY!",
-  "SCALP POWERED!",
+  "HEAD SO SMOOTH NASA CALLING!",
+  "BALD STATUS: LEGENDARY!",
+  "HAIRLESS WONDER!",
   "NO HAIR NO PROBLEM?",
+  "MR. CLEAN REAL LIFE!",
+  "SCALP POWERED!",
+  "SPF 100 REQUIRED!",
   "ECHO FROM YOUR HEAD!",
   "IS THAT A LIGHTHOUSE?",
+  "FRESHLY WAXED BRAINCASE!",
   "CRITICAL BALD CONDITION!",
-  "YOU POLISHED THAT?",
-  "BALD STATUS: LEGENDARY!",
-  "SMOOTH LIKE GLASS!",
+  "GET HAIR IMMEDIATELY!",
+  "SHINY LIKE GLASS!",
   "TOP TIER BALD!",
-  "HAIRLINE IN THE VOID!",
-  "GET HAIR IMMEDIATELY!"
+  "BALD POWER MAXED OUT!",
+  "SMOOTH LIKE ICE!",
+  "POLISHED TO PERFECTION!",
+  "GLOSSY HEAD MODE!"
 ];
 
 const imgURL = "GetHair.png";
 
-// Random roast text avoiding overlap
 const placedTexts = [];
+
 function addText(content) {
   const txt = document.createElement('div');
   txt.className = 'text';
@@ -114,7 +107,7 @@ function addText(content) {
 
 roastLines.forEach(addText);
 
-// Moving Mr. Cleans
+// Add spinning and moving Mr. Clean images
 for (let i = 0; i < 30; i++) {
   const img = document.createElement('img');
   img.src = imgURL;
@@ -128,18 +121,21 @@ for (let i = 0; i < 30; i++) {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 100);
     const duration = 3 + Math.random() * 3;
+    const currentRotation = parseFloat(el.style.transform.replace(/[^0-9.]/g, '')) || 0;
+    const nextRotation = currentRotation + 360;
+
     el.style.transition = `top ${duration}s linear, left ${duration}s linear, transform ${duration}s linear`;
-    const spin = parseFloat(el.style.transform.replace(/[^0-9.]/g, '')) + 360;
     el.style.top = y + 'px';
     el.style.left = x + 'px';
-    el.style.transform = `rotate(${spin}deg)`;
+    el.style.transform = `rotate(${nextRotation}deg)`;
+
     setTimeout(() => moveForever(el), duration * 1000);
   }
 
   moveForever(img);
 }
 
-// Auto-play GET HAIR!!! audio
+// Optional audio
 const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
 audio.play();
 </script>
