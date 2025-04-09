@@ -1,103 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BALD ATTACK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR CLEAN INVASION</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: #fff;
+      background: white;
       font-family: Impact, sans-serif;
     }
 
-    .text {
+    .clean {
       position: absolute;
-      font-size: 32px;
-      animation: zoom 1s infinite alternate, shake 0.2s infinite alternate;
-      white-space: nowrap;
-      color: hsl(calc(360 * var(--rand)), 100%, 50%);
-    }
-
-    @keyframes shake {
-      0% { transform: translate(0, 0);}
-      100% { transform: translate(5px, 5px);}
-    }
-
-    @keyframes zoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.5); }
-    }
-
-    .mrclean {
-      position: absolute;
-      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       animation: spin 2s linear infinite;
     }
 
+    .clean img {
+      width: 100px;
+    }
+
+    .clean .text {
+      color: hsl(calc(360 * var(--rand)), 100%, 50%);
+      font-size: 30px;
+      animation: zoom 1s infinite alternate, shake 0.2s infinite alternate;
+      white-space: nowrap;
+    }
+
     @keyframes spin {
-      from { transform: rotate(0deg);}
-      to { transform: rotate(360deg);}
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+
+    @keyframes zoom {
+      from {transform: scale(1);}
+      to {transform: scale(1.5);}
+    }
+
+    @keyframes shake {
+      0% {transform: translate(0, 0);}
+      100% {transform: translate(4px, 4px);}
     }
   </style>
 </head>
 <body>
-  <div id="images"></div>
-  <div id="texts"></div>
-
   <script>
     const roastLines = [
       "GET HAIR!!!",
-      "BALD DETECTED!",
-      "MR CLEAN ENERGY!!!",
-      "SHINY HEAD!!!",
-      "WHERE'S YOUR HAIR???",
-      "SMOOTH LIKE A BOWLING BALL!",
-      "CHROME DOME!!!",
-      "SPF 100 REQUIRED!",
-      "SKULL EMOJI REAL LIFE 💀",
-      "BRAIN REFLECTION MAXIMUM",
-      "BEACON OF BALDNESS",
+      "BALD ALERT!!!",
+      "CLEAN MACHINE!",
+      "HEAD LIKE POLISHED FLOOR",
+      "NO HAIR DETECTED",
+      "SMOOTH OPERATOR",
+      "SKIN FADE TOO FAR",
+      "ULTRA BALD",
+      "BEAN HEAD MODE",
+      "SHINY ZONE",
+      "FOLLICLE FAILURE",
+      "SLICKER THAN OIL",
+      "CHROME SKULL",
+      "SKULLMAXED",
+      "HAIRLESS HERO"
     ];
 
-    const imgURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
+    const mrCleanURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
+    const numCleans = 20; // however bald you feel today
 
-    // Random roast text
-    for (let i = 0; i < roastLines.length; i++) {
+    for (let i = 0; i < numCleans; i++) {
+      const container = document.createElement('div');
+      container.className = 'clean';
+
+      const img = document.createElement('img');
+      img.src = mrCleanURL;
+
       const txt = document.createElement('div');
       txt.className = 'text';
-      txt.innerText = roastLines[i];
-      txt.style.top = Math.random() * window.innerHeight + 'px';
-      txt.style.left = Math.random() * window.innerWidth + 'px';
+      txt.innerText = roastLines[i % roastLines.length];
       txt.style.setProperty('--rand', Math.random());
-      document.getElementById('texts').appendChild(txt);
-    }
 
-    // Spawn moving Mr. Cleans
-    for (let i = 0; i < 15; i++) {
-      const img = document.createElement('img');
-      img.src = imgURL;
-      img.className = 'mrclean';
-      img.style.top = Math.random() * window.innerHeight + 'px';
-      img.style.left = Math.random() * window.innerWidth + 'px';
-      document.getElementById('images').appendChild(img);
+      container.appendChild(img);
+      container.appendChild(txt);
+      document.body.appendChild(container);
 
-      // Animate to new random positions forever
-      function moveRandomly(el) {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 100);
-        el.style.transition = `top ${2 + Math.random() * 3}s linear, left ${2 + Math.random() * 3}s linear`;
-        el.style.top = y + 'px';
-        el.style.left = x + 'px';
-        setTimeout(() => moveRandomly(el), 3000 + Math.random() * 2000);
+      function moveRandom() {
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 150);
+        container.style.transition = `top ${2 + Math.random() * 3}s linear, left ${2 + Math.random() * 3}s linear`;
+        container.style.top = y + 'px';
+        container.style.left = x + 'px';
+        setTimeout(moveRandom, 3000 + Math.random() * 3000);
       }
 
-      moveRandomly(img);
+      moveRandom();
     }
 
-    // Auto-play GET HAIR!!!
+    // Screaming forever
     const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
+    audio.loop = true;
     audio.play();
   </script>
 </body>
