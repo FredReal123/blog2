@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BALD ATTACK x30 MODE</title>
+  <title>BALD ATTACK TURBO</title>
   <style>
     body {
       margin: 0;
@@ -62,9 +62,8 @@
       "NO SHADOW ZONE", "MAXIMUM POLISH"
     ];
 
-    const imgURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
+    const imgURL = "GetHair.png";
 
-    // Spawn 30 Roasts
     for (let i = 0; i < 30; i++) {
       const txt = document.createElement('div');
       txt.className = 'text';
@@ -75,7 +74,6 @@
       document.getElementById('texts').appendChild(txt);
     }
 
-    // Spawn 30 Mr. Cleans
     for (let i = 0; i < 30; i++) {
       const img = document.createElement('img');
       img.src = imgURL;
@@ -87,16 +85,15 @@
       function moveRandomly(el) {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 100);
-        el.style.transition = `top ${2 + Math.random() * 3}s linear, left ${2 + Math.random() * 3}s linear`;
+        el.style.transition = `top ${0.5 + Math.random() * 1.5}s linear, left ${0.5 + Math.random() * 1.5}s linear`;
         el.style.top = y + 'px';
         el.style.left = x + 'px';
-        setTimeout(() => moveRandomly(el), 3000 + Math.random() * 2000);
+        setTimeout(() => moveRandomly(el), 1000 + Math.random() * 1000);
       }
 
       moveRandomly(img);
     }
 
-    // Auto-play GET HAIR!!! audio on loop
     const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
     audio.loop = true;
     audio.play();
