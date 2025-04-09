@@ -107,7 +107,7 @@ function addText(content) {
 
 roastLines.forEach(addText);
 
-// Add spinning and moving Mr. Clean images
+// Mr. Clean Moves Instantly & Forever
 for (let i = 0; i < 30; i++) {
   const img = document.createElement('img');
   img.src = imgURL;
@@ -120,22 +120,23 @@ for (let i = 0; i < 30; i++) {
   function moveForever(el) {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 100);
-    const duration = 3 + Math.random() * 3;
+    const speed = 0.7 + Math.random() * 1.3; // FAST
+
     const currentRotation = parseFloat(el.style.transform.replace(/[^0-9.]/g, '')) || 0;
     const nextRotation = currentRotation + 360;
 
-    el.style.transition = `top ${duration}s linear, left ${duration}s linear, transform ${duration}s linear`;
+    el.style.transition = `top ${speed}s linear, left ${speed}s linear, transform ${speed}s linear`;
     el.style.top = y + 'px';
     el.style.left = x + 'px';
     el.style.transform = `rotate(${nextRotation}deg)`;
 
-    setTimeout(() => moveForever(el), duration * 1000);
+    setTimeout(() => moveForever(el), speed * 1000); // Instant next move
   }
 
-  moveForever(img);
+  moveForever(img); // Start moving instantly
 }
 
-// Optional audio
+// Optional Audio
 const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
 audio.play();
 </script>
