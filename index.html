@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BALD ATTACK TURBO</title>
+  <title>BALD ATTACK FOREVER</title>
   <style>
     body {
       margin: 0;
@@ -62,7 +62,7 @@
       "NO SHADOW ZONE", "MAXIMUM POLISH"
     ];
 
-    const imgURL = "GetHair.png";
+    const imgURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
 
     for (let i = 0; i < 30; i++) {
       const txt = document.createElement('div');
@@ -82,16 +82,19 @@
       img.style.left = Math.random() * window.innerWidth + 'px';
       document.getElementById('images').appendChild(img);
 
-      function moveRandomly(el) {
+      function moveForever(el) {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 100);
-        el.style.transition = `top ${0.5 + Math.random() * 1.5}s linear, left ${0.5 + Math.random() * 1.5}s linear`;
+        const speed = 2 + Math.random() * 3; // 2s - 5s
+
+        el.style.transition = `top ${speed}s linear, left ${speed}s linear`;
         el.style.top = y + 'px';
         el.style.left = x + 'px';
-        setTimeout(() => moveRandomly(el), 1000 + Math.random() * 1000);
+
+        setTimeout(() => moveForever(el), speed * 1000);
       }
 
-      moveRandomly(img);
+      moveForever(img);
     }
 
     const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
