@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BALD GLIDE ATTACK</title>
+  <title>BALD GLIDE ATTACK EXTREME</title>
   <style>
     body {
       margin: 0;
@@ -64,7 +64,7 @@
 
     const imgURL = 'GetHair.png';
 
-    // Create texts
+    // Create Texts
     for (let i = 0; i < 30; i++) {
       const txt = document.createElement('div');
       txt.className = 'text';
@@ -84,22 +84,29 @@
       img.style.left = Math.random() * window.innerWidth + 'px';
       document.getElementById('images').appendChild(img);
 
-      glideForever(img);
+      glideRandomDirection(img);
     }
 
-    function glideForever(el) {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 100);
-      const speed = 2 + Math.random() * 3; // 2s - 5s glide time
+    function glideRandomDirection(el) {
+      const angle = Math.random() * Math.PI * 2; // random radian
+      const distance = 300 + Math.random() * 500; // random distance
+      const duration = 2 + Math.random() * 3; // 2-5s
 
-      el.style.transition = `top ${speed}s linear, left ${speed}s linear`;
-      el.style.top = y + 'px';
-      el.style.left = x + 'px';
+      let newX = parseFloat(el.style.left) + Math.cos(angle) * distance;
+      let newY = parseFloat(el.style.top) + Math.sin(angle) * distance;
 
-      setTimeout(() => glideForever(el), speed * 1000);
+      // Bounce if out of bounds
+      newX = Math.max(0, Math.min(window.innerWidth - 100, newX));
+      newY = Math.max(0, Math.min(window.innerHeight - 100, newY));
+
+      el.style.transition = `top ${duration}s linear, left ${duration}s linear`;
+      el.style.left = newX + 'px';
+      el.style.top = newY + 'px';
+
+      setTimeout(() => glideRandomDirection(el), duration * 1000);
     }
 
-    // Loop Bald Voice
+    // Bald Sound Forever
     const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
     audio.loop = true;
     audio.play();
