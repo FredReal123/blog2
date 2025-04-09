@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ULTIMATE MR CLEAN ROAST</title>
+<title>MR CLEAN WANDER SIMULATOR 9000</title>
 <style>
   body {
     background-color: #fff;
@@ -20,10 +20,10 @@
     white-space: nowrap;
   }
 
-  img {
+  .mrclean {
     position: absolute;
     width: 120px;
-    animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite, moveAround 10s infinite alternate ease-in-out;
   }
 
   @keyframes shake {
@@ -37,8 +37,16 @@
   }
 
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+  }
+
+  @keyframes moveAround {
+    0% {top: 0; left: 0;}
+    25% {top: 80%; left: 10%;}
+    50% {top: 40%; left: 80%;}
+    75% {top: 90%; left: 60%;}
+    100% {top: 0; left: 100%;}
   }
 </style>
 </head>
@@ -59,7 +67,6 @@ const roastLines = [
   "SHINY HEAD!!!",
   "WHERE'S YOUR HAIR???",
   "SMOOTH LIKE A BOWLING BALL!",
-  "BARBER SPEEDRUN COMPLETED!",
   "CHROME DOME!!!",
   "SPF 100 REQUIRED!",
   "SKULL EMOJI REAL LIFE 💀",
@@ -69,16 +76,18 @@ const roastLines = [
 
 const imgURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
 
-// Spawn spinning Mr. Cleans
-for(let i=0; i<25; i++){
+// Spawn MOVING Mr. Cleans
+for(let i=0; i<10; i++){
   const img = document.createElement('img');
   img.src = imgURL;
+  img.className = 'mrclean';
   img.style.top = Math.random() * window.innerHeight + 'px';
   img.style.left = Math.random() * window.innerWidth + 'px';
+  img.style.animationDuration = (5 + Math.random() * 10) + 's, 10s';
   document.getElementById('images').appendChild(img);
 }
 
-// Spawn zooming roast text
+// Spawn roasting text
 for(let i=0; i<roastLines.length; i++){
   const txt = document.createElement('div');
   txt.className = 'text';
@@ -89,10 +98,14 @@ for(let i=0; i<roastLines.length; i++){
   document.getElementById('texts').appendChild(txt);
 }
 
-// Auto-play voice: GET HAIR!!!
+// Auto-play voice GET HAIR!!!
 const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
 audio.play();
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
