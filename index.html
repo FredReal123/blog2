@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BALD ATTACK x50 MODE</title>
+  <title>BALD ATTACK x30 MODE</title>
   <style>
     body {
       margin: 0;
@@ -59,20 +59,13 @@
       "ULTRA GLEAM ACTIVATED", "BALD ON PURPOSE", "FATAL HAIRCUT",
       "GLISTENING POWER", "PERMA SHAVE MODE", "MIRROR FOREHEAD",
       "THE BALD LEGEND", "HAIRLESS WONDER", "SURFACE REFLECTION 9000",
-      "NO SHADOW ZONE", "MAXIMUM POLISH", "HEAD LIKE A PEARL",
-      "SMOOTH LIKE SILK", "SUNROOF HEAD ACTIVATED", "BARBER'S NIGHTMARE",
-      "FRESHLY WAXED", "FOIL HEAD READY", "FOLLICLE TERMINATED",
-      "GLAZED HEAD REALNESS", "WAXED & WILD", "CHROME PLATED",
-      "MR REFLECTOR", "BRAIN BEAM LOADED", "HEADLIGHTS ENGAGED",
-      "LITERAL LIGHTHOUSE", "ASTRODOME ONLINE", "SHAVE GOD",
-      "MR. BEAN (NO HAIR VERSION)", "LEGENDARY POLISH", "BALD KINGDOM",
-      "MAX SHINE MODE", "HAIR VACUUMED"
+      "NO SHADOW ZONE", "MAXIMUM POLISH"
     ];
 
-    const imgURL = "GetHair.png";
+    const imgURL = "https://upload.wikimedia.org/wikipedia/en/5/5d/Mr._Clean_logo.png";
 
-    // Spawn 50 Text Roasts
-    for (let i = 0; i < 50; i++) {
+    // Spawn 30 Roasts
+    for (let i = 0; i < 30; i++) {
       const txt = document.createElement('div');
       txt.className = 'text';
       txt.innerText = roastLines[i % roastLines.length];
@@ -82,8 +75,8 @@
       document.getElementById('texts').appendChild(txt);
     }
 
-    // Spawn 50 Spinning Mr Cleans
-    for (let i = 0; i < 50; i++) {
+    // Spawn 30 Mr. Cleans
+    for (let i = 0; i < 30; i++) {
       const img = document.createElement('img');
       img.src = imgURL;
       img.className = 'mrclean';
@@ -103,7 +96,7 @@
       moveRandomly(img);
     }
 
-    // Auto-play GET HAIR!!! audio forever
+    // Auto-play GET HAIR!!! audio on loop
     const audio = new Audio('https://ttsmp3.com/created_audio/f1f96f12b1b19f121be29e2c4df4227b.mp3');
     audio.loop = true;
     audio.play();
